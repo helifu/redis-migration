@@ -1,6 +1,7 @@
 # redis-migration
 
 **redis-migration** is a fast, light-weight migration tool for redis. Just add redis-migration.c to the redis sources. We **scale out** our redis clusters by this tool.
+
 ![image](http://nos.netease.com/knowledge/2c39da89-5b57-4c8c-905a-ed10347bbc76)
 ## Build
 
