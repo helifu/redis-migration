@@ -19,7 +19,7 @@
 #include <sys/wait.h>
 #include <limits.h>
 #include <sys/utsname.h>
-
+#include <sys/resource.h>
 
 #include "ae.h"
 #include "hiredis.h"
