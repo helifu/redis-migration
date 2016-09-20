@@ -7,7 +7,7 @@
 
 To build redis-migration from source:
 
-    $ git clone git@github.com:twitter/twemproxy.git
+    $ git clone https://github.com/helifu/redis-migration.git
     $ cd redis-migration/deps/
     $ chmod +x update-jemalloc.sh
     $ ./update-jemalloc.sh 3.6.0
