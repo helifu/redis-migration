@@ -34,11 +34,42 @@ To build redis-migration from source:
            redis-migration -dip: destination ip
            redis-migration -dport: destination port
            redis-migration -dauth: destination auth
-           redis-migration -rdb: rdb file
-           redis-migration -aof: aof file
+           redis-migration -rdb: rdb file (snapshot data)
+           redis-migration -aof: aof file (delta data)
            redis-migration -client: client num
     Examples:
            ./redis-migration -h
            ./redis-migration -v
            ./redis-migration -sip 192.168.1.1 -sport 6379 -sauth 123456 -dip 192.168.1.2 -dport 6379 -dauth 654321
            ./redis-migration -sip 192.168.1.1 -sport 6379 -sauth 123456 -dip 192.168.1.2 -dport 6379 -dauth 654321 -rdb /tmp/dump.rdb -aof /tmp/appendonly.aof -client 100
+
+
+## Tips
+
+    1.Dirty data:
+        It's very import to empty the database on dip:dport before migrating data, otherwise there will be dirty data or exception.
+
+    2.DB0:
+        Remember that this tool only support db0 database.
+
+    3.Exception:
+        Server closed the TCP connection: 
+        ![image](https://github.com/helifu/redis-migration/blob/master/error1.jpg)
+    
+        answer:
+            a.redis-server 'timeout' parameter in redis.conf?
+            b.is there any unsupported command for twemproxy, if dip is twemproxy?
+            c.network jitter?
+    
+        Timeout:
+            ![image](https://github.com/helifu/redis-migration/blob/master/error2.jpg)
+
+        answer:
+            a.there is a large key/value: you can modify the 'timeout' parameter for twemproxy if your dip is twemproxy;
+
+        Error:
+            ![image](https://github.com/helifu/redis-migration/blob/master/error3.jpg)
+
+        answer:
+            a.repeated data from multi-sip;
+            b.dirty data;
