@@ -54,22 +54,19 @@ To build redis-migration from source:
 
     3.Exception:
         Server closed the TCP connection: 
-        ![image](https://github.com/helifu/redis-migration/blob/master/error1.jpg)
+        ![image](http://nos.netease.com/knowledge/06b748b9-d78b-41f4-947b-16285ed525e7)
     
-        answer:
             a.redis-server 'timeout' parameter in redis.conf?
             b.is there any unsupported command for twemproxy, if dip is twemproxy?
             c.network jitter?
     
         Timeout:
-            ![image](https://github.com/helifu/redis-migration/blob/master/error2.jpg)
+            ![image](http://nos.netease.com/knowledge/8675ab14-e1fe-47c1-88b8-046ba8ec3589)
 
-        answer:
             a.there is a large key/value: you can modify the 'timeout' parameter for twemproxy if your dip is twemproxy;
 
         Error:
-            ![image](https://github.com/helifu/redis-migration/blob/master/error3.jpg)
+            ![image](http://nos.netease.com/knowledge/e3e4a869-c087-483b-a6af-9c98f2c3f085?imageView&thumbnail=980x0)
 
-        answer:
             a.repeated data from multi-sip;
             b.dirty data;
