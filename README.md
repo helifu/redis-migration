@@ -50,7 +50,11 @@ To build redis-migration from source:
         It's very import to empty the database on dip:dport before migrating data, otherwise there will be dirty data or exception.
 
     2.DB0:
-        Remember that this tool only support db0 database.
+        Remember that the tool only support db0 database now, but you could comment the code to support more db:
+            line 1108   /*if (dbid != 0) {
+            line 1109       fprintf(stderr, "Error, RDB file has database:%d\n", dbid);
+            line 1110       exit(1);
+            line 1111   }*/
 
     3.Exception:
         Server closed the TCP connection: 
