@@ -58,19 +58,19 @@ To build redis-migration from source:
 
     3.Exception:
         Server closed the TCP connection: 
-            <http://nos.netease.com/knowledge/06b748b9-d78b-41f4-947b-16285ed525e7>
+        ![image](http://nos.netease.com/knowledge/06b748b9-d78b-41f4-947b-16285ed525e7)
     
             a.redis-server 'timeout' parameter in redis.conf?
             b.is there any unsupported command for twemproxy, if dip is twemproxy?
             c.network jitter?
     
         Timeout:
-            <http://nos.netease.com/knowledge/8675ab14-e1fe-47c1-88b8-046ba8ec3589>
+            ![image](http://nos.netease.com/knowledge/8675ab14-e1fe-47c1-88b8-046ba8ec3589)
 
             a.there is a large key/value: you can modify the 'timeout' parameter for twemproxy if your dip is twemproxy;
 
         Error:
-            <http://nos.netease.com/knowledge/e3e4a869-c087-483b-a6af-9c98f2c3f085?imageView&thumbnail=980x0>
+            ![image](http://nos.netease.com/knowledge/e3e4a869-c087-483b-a6af-9c98f2c3f085?imageView&thumbnail=980x0)
 
             a.repeated data from multi-sip;
             b.dirty data;
