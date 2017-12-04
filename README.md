@@ -1,7 +1,9 @@
 # redis-migration
 
 **redis-migration** is a fast, light-weight migration tool for redis. Just add a new file "redis-migration.c" to the redis sources. We **scale out** our redis clusters by this tool. Please google(baidu) "redis-migration：独创的redis在线数据迁移工具" for more info. Btw, there is a flash for redis migration in source code, 'redis replication flash.pptx'.
+
 redis-migrate是一款超轻量级的redis数据迁移工具，保持redis源码文件不做改动的前提下，只新增加了一个"redis-migration.c"文件，大家可以使用google或者baidu搜索"redis-migration：独创的redis在线数据迁移工具"获取更详细信息。另，源码包里附上了一份redis数据迁移的动画'redis replication flash.pptx'，希望大家喜欢。
+
 Thank you for your use and attention,  i am very very happy ^_^
 
 ![image](http://nos.netease.com/knowledge/2c39da89-5b57-4c8c-905a-ed10347bbc76)
@@ -48,6 +50,8 @@ To build redis-migration from source:
 
 ## Tips
     Here we use 'twemproxy' as 'destination'.
+
+
     1.Dirty data:
         It's very important to empty the database on destination(dip:dport) before migrating data, otherwise there will be dirty data or exception.
 
