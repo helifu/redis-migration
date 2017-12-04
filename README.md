@@ -1,6 +1,8 @@
 # redis-migration
 
-**redis-migration** is a fast, light-weight migration tool for redis. Just add redis-migration.c to the redis sources. We **scale out** our redis clusters by this tool. <http://www.bitstech.net/2016/03/03/redis-migration/>
+**redis-migration** is a fast, light-weight migration tool for redis. Just add a new file "redis-migration.c" to the redis sources. We **scale out** our redis clusters by this tool. Please google(baidu) "redis-migration：独创的redis在线数据迁移工具" for more info. Btw, there is a flash for redis migration in source code, 'redis replication flash.pptx'.
+redis-migrate是一款超轻量级的redis数据迁移工具，保持redis源码文件不做改动的前提下，只新增加了一个"redis-migration.c"文件，大家可以使用google或者baidu搜索"redis-migration：独创的redis在线数据迁移工具"获取更详细信息。另，源码包里附上了一份redis数据迁移的动画'redis replication flash.pptx'，希望大家喜欢。
+Thank you for your use and attention,  i am very very happy ^_^
 
 ![image](http://nos.netease.com/knowledge/2c39da89-5b57-4c8c-905a-ed10347bbc76)
 ## Build
@@ -45,32 +47,32 @@ To build redis-migration from source:
 
 
 ## Tips
-
+    Here we use 'twemproxy' as 'destination'.
     1.Dirty data:
-        It's very import to empty the database on dip:dport before migrating data, otherwise there will be dirty data or exception.
+        It's very important to empty the database on destination(dip:dport) before migrating data, otherwise there will be dirty data or exception.
 
     2.DB0:
-        Remember that the tool only support db0 database now, but you could comment the code to support more db:
+        Remember that the tool only support db0 database now, but you could comment the code in "redis-migration.c" to support more dbs:
             line 1108   /*if (dbid != 0) {
             line 1109       fprintf(stderr, "Error, RDB file has database:%d\n", dbid);
             line 1110       exit(1);
             line 1111   }*/
 
     3.Exception:
-        Server closed the TCP connection: 
-        ![image](http://nos.netease.com/knowledge/06b748b9-d78b-41f4-947b-16285ed525e7)
+        1)Server closed the TCP connection: 
+![image](http://nos.netease.com/knowledge/06b748b9-d78b-41f4-947b-16285ed525e7)
     
-            a.redis-server 'timeout' parameter in redis.conf?
-            b.is there any unsupported command for twemproxy, if dip is twemproxy?
+            a.is there any unsupported command for 'twemproxy'?
+            b.do you set 'timeout' parameter in redis.conf which belongs to destination's redis-server?
             c.network jitter?
     
-        Timeout:
-            ![image](http://nos.netease.com/knowledge/8675ab14-e1fe-47c1-88b8-046ba8ec3589)
+        2)Timeout:
+![image](http://nos.netease.com/knowledge/8675ab14-e1fe-47c1-88b8-046ba8ec3589)
 
-            a.there is a large key/value: you can modify the 'timeout' parameter for twemproxy if your dip is twemproxy;
+            a.there is a very very large key/value pair: you could increase the 'timeout' value in 'twemproxy' to solve this problem;
 
-        Error:
-            ![image](http://nos.netease.com/knowledge/e3e4a869-c087-483b-a6af-9c98f2c3f085?imageView&thumbnail=980x0)
+        3)Error:
+![image](http://nos.netease.com/knowledge/e3e4a869-c087-483b-a6af-9c98f2c3f085?imageView&thumbnail=980x0)
 
-            a.repeated data from multi-sip;
-            b.dirty data;
+            a.dirty data: do you empty the redis-serveres of 'destination'?
+            b.there is repeated data from multiple sip, such as key1 in sip1 and sip2.
