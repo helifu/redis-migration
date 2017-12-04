@@ -53,10 +53,12 @@ To build redis-migration from source:
 
 
     1.Dirty data:
-        It's very important to empty the database on destination(dip:dport) before migrating data, otherwise there will be dirty data or exception.
+        It's very important to empty the database on destination(dip:dport) before migrating data, otherwise 
+          there will be dirty data or exception.
 
     2.DB0:
-        Remember that the tool only support db0 database now, but you could comment the code in "redis-migration.c" to support more dbs:
+        Remember that the tool only support db0 database now, but you could comment the code in "redis-migration.c" 
+          to support more dbs:
             line 1108   /*if (dbid != 0) {
             line 1109       fprintf(stderr, "Error, RDB file has database:%d\n", dbid);
             line 1110       exit(1);
@@ -73,10 +75,11 @@ To build redis-migration from source:
         2)Timeout:
 ![image](http://nos.netease.com/knowledge/8675ab14-e1fe-47c1-88b8-046ba8ec3589)
 
-            a.there is a very very large key/value pair: you could increase the 'timeout' value in 'twemproxy' to solve this problem;
+            a.there is a very very large key/value pair: you could increase the 'timeout' value in 'twemproxy' 
+              to solve this problem;
 
         3)Error:
 ![image](http://nos.netease.com/knowledge/e3e4a869-c087-483b-a6af-9c98f2c3f085?imageView&thumbnail=980x0)
 
-            a.dirty data: do you empty the redis-serveres of 'destination'?
-            b.there is repeated data from multiple sip, such as key1 in sip1 and sip2.
+            a.there is repeated data from multiple sip, such as key1 in sip1 and sip2.
+            b.dirty data: do you empty the redis-serveres of 'destination'?
